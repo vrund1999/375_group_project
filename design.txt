@@ -13,3 +13,5 @@ Arpit - Designing out main web page
 Vrund - API covid stats
 Rahil - Vaccination Alert inputs fields, etc.
 Sarthak - Database setup etc.
+
+We can all contribute to the UI as we need to.
