@@ -1,0 +1,15 @@
+Main page -
+  - Main navigation bar (Main page, Vaccination Alert)
+  - Dropdown with list of countries to shows covid stats/news based on user selection.
+  - Table showing total covid cases, total deaths, new cases/deaths and latest news
+
+Vaccination Alert
+  - Input field for name, date of vaccination
+  - Dropdown field for type of vaccine (with three types)
+  - Input field for email
+  - Submit button
+
+Arpit - Designing out main web page
+Vrund - API covid stats
+Rahil - Vaccination Alert inputs fields, etc.
+Sarthak - Database setup etc.
