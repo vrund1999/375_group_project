@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        button {
+        position: absolute;
+        left: 100px;
+        top: 250px;
+      }
+    </style>
+	<meta charset="utf-8">
+	<title>COVID-19 Vaccine Alert</title>
+</head>
+<body>
+
+<h1>COVID-19 Vaccine Alert System</h1>
+
+<div>
+	<div>
+        <h3>Personal Information</h3>
+		<label name="firstName">First Name:</label>
+		<input type="text" id="firstName">
+        <label name="lastName">Last Name:</label>
+		<input type="text" id="lastName">
+        <label name="email">Email Address:</label>
+		<input type="email" id="email">
+	</div>
+	<div>
+		<h3>Vaccine Information</h3>
+        <label for="cars">Choose a COVID-19 Vaccine:</label>
+        <select name="vaccineType" id="vaccineType">
+            <option value="">--Please choose a COVID-19 Vaccine--</option>
+            <option value="pfizer">Pfizer</option>
+            <option value="moderna">Moderna</option>
+            <option value="johnsonAndjohnson">Johnson and Johnson</option>
+        </select>
+
+        <label name="vaccineDate">When is Your Vaccine Appointment?</label>
+		<input type="date" id="vaccineDate">
+	</div>
+</div>
+
+<button id="signup">Sign up for COVID-19 Vaccine Alert!</button>
+
+</body>
+</html>
