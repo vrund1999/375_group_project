@@ -1,0 +1,250 @@
+    body{
+          position: relative;
+          width: 1440px;
+          height: 900px;
+
+          background: rgba(198, 238, 255, 0.58);
+        }
+        .information{
+          position: absolute;
+          width: 1000px;
+          height: 626px;
+          left: 220px;
+          top: 160px;
+
+          background: #FCF6F5;
+          border-radius: 30px;
+
+        }
+        h1{
+          position: absolute;
+          width: 682px;
+          height: 97px;
+          left: 379px;
+          top: 5px;
+
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 48px;
+          line-height: 58px;
+
+          color: #000000;
+            
+        }
+        h3{
+          position: absolute;
+          width: 334px;
+          height: 65px;
+          left: 357px;
+          top: 1px;
+
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 29px;
+          line-height: 43px;
+
+          color: #000000;
+
+        }
+        #fName{
+       position: absolute;
+        width: 164px;
+        height: 56px;
+        left: 40px;
+        top: 121px;
+
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 36px;
+
+        color: #000000;
+
+        }
+        #firstName{
+         position: absolute;
+          width: 267px;
+          height: 40px;
+          left: 215px;
+          top: 121px;
+          background: #FFFEFF;
+          border: 1px solid #000000;
+          box-sizing: border-box;
+          border-radius: 30px;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 36px;
+          
+        }
+        #lName{
+          position: absolute;
+          width: 157px;
+          height: 56px;
+          left: 500px;
+          top: 121px;
+
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 25px;
+          line-height: 36px;
+
+          color: #000000;
+        } 
+        #lastName{
+          position: absolute;
+          width: 280px;
+          height: 40px;
+          left: 670px;
+          top: 121px;
+
+          background: #FFFEFF;
+          border: 1px solid #000000;
+          box-sizing: border-box;
+          border-radius: 30px;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 36px;
+        }
+        #eMl{
+          position: absolute;
+          width: 208px;
+          height: 56px;
+          left: 40px;
+          top: 199px;
+
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 25px;
+          line-height: 36px;
+
+          color: #000000;
+        }
+        #email{
+          position: absolute;
+          width: 430px;
+          height: 40px;
+          left: 260px;
+          top: 199px;
+
+          background: #FFFEFF;
+          border: 1px solid #000000;
+          box-sizing: border-box;
+          border-radius: 30px;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 36px;
+        }
+        .Vaccine-information{
+          position: absolute;
+          width: 334px;
+          height: 65px;
+          left: 357px;
+          top: 244px;
+
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 29px;
+          line-height: 43px;
+
+          color: #000000;
+        }
+        #car{
+          position: absolute;
+          width: 409px;
+          height: 56px;
+          left: 40px;
+          top: 365px;
+
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 25px;
+          line-height: 36px;
+
+          color: #000000;
+        }
+        #vaccineType{
+          position: absolute;
+         width: 430px;
+          height: 48px;
+          left: 496px;
+          top: 365px;
+
+          background: #FFFEFF;
+          border: 1px solid #000000;
+          box-sizing: border-box;
+          border-radius: 30px;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 36px;
+        }
+        #vaccineDatelabel{
+        position: absolute;
+        width: 507px;
+        height: 56px;
+        left: 40px;
+        top: 465px;
+
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 36px;
+
+        color: #000000;
+
+        }
+        #vaccineDate{
+          position: absolute;
+          width: 267px;
+          height: 40px;
+          left: 580px;
+          top: 465px;
+
+          background: #FFFEFF;
+          border: 1px solid #000000;
+          box-sizing: border-box;
+          border-radius: 30px;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 36px;
+        }
+        #signup{
+        position: absolute;
+        width: 424px;
+        height: 48px;
+        left: 508px;
+        top: 715px;
+
+        background: #CEEAFF;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 30px;
+        }
+        button {
+        position: absolute;
+        left: 100px;
+        top: 250px;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 36px;
+      
+      }
