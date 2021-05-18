@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        button {
-        position: absolute;
-        left: 100px;
-        top: 250px;
-      }
-    </style>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+ 
+    
 	<meta charset="utf-8">
 	<title>COVID-19 Vaccine Alert</title>
 </head>
@@ -15,33 +12,33 @@
 
 <h1>COVID-19 Vaccine Alert System</h1>
 
-<div>
+<div class="information">
 	<div>
         <h3>Personal Information</h3>
-		<label name="firstName">First Name:</label>
+		<label name="firstName" id="fName">First Name:</label>
 		<input type="text" id="firstName">
-        <label name="lastName">Last Name:</label>
+        <label name="lastName" id="lName">Last Name:</label>
 		<input type="text" id="lastName">
-        <label name="email">Email Address:</label>
+        <label name="email" id="eMl">Email Address:</label>
 		<input type="email" id="email">
 	</div>
 	<div>
-		<h3>Vaccine Information</h3>
-        <label for="cars">Choose a COVID-19 Vaccine:</label>
+		<h3 class="Vaccine-information">Vaccine Information</h3>
+        <label for="cars" id="car">Choose a COVID-19 Vaccine:</label>
         <select name="vaccineType" id="vaccineType">
-            <option value="">--Please choose a COVID-19 Vaccine--</option>
+            <option value="" class="optionss">--Please choose a COVID-19 Vaccine--</option>
             <option value="pfizer">Pfizer</option>
             <option value="moderna">Moderna</option>
             <option value="johnsonAndjohnson">Johnson and Johnson</option>
         </select>
-    </div>
-    <div>
-        <label name="vaccineDate">When is Your Vaccine Appointment?</label>
+
+        <label name="vaccineDate" id="vaccineDatelabel">When is Your Vaccine Appointment?</label>
 		<input type="date" id="vaccineDate">
-    </div>
+	</div>
 </div>
 
 <button id="signup">Sign up for COVID-19 Vaccine Alert!</button>
 
 </body>
+
 </html>
