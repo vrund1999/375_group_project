@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/vrund1999/375_group_project#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "iso-countries-lookup": "^2.0.0"
   }
 }
