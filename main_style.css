@@ -1,0 +1,166 @@
+body{
+  position: relative;
+  width: 1440px;
+  height: 900px;
+
+  background: rgba(198, 238, 255, 0.58);
+}
+.search-div{
+  position: absolute;
+  width: 555px;
+  height: 59px;
+  left: 442px;
+  top: 51px;
+  background: #F4FDFF;
+  border-radius: 30px;
+
+
+}
+#search-box{
+  position: absolute;
+  width: 313px;
+  height: 38px;
+  left: 146px;
+  top: 10px;
+  background: none;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+
+  color: black;
+  border: 0;
+}
+.total-cases{
+  position: absolute;
+  width: 323px;
+  height: 215px;
+  left: 61px;
+  top: 167px;
+
+  background: #FAECFB;
+  border-radius: 30px;
+}
+#total-text{
+  position: absolute;
+  width: 156px;
+  height: 53px;
+  left: 96px;
+  top: 22px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 36px;
+
+  color: #000000;
+
+}
+
+#total-number{
+  position: absolute;
+  width: 133px;
+  height: 43px;
+  left: 96px;
+  top: 102px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+
+  color: #000000;
+}
+
+.death-div{
+  position: absolute;
+  width: 323px;
+  height: 215px;
+  left: 543px;
+  top: 167px;
+
+  background: #FBECEC;
+  border-radius: 30px;
+}
+
+#death-text{
+    position: absolute;
+    width: 156px;
+    height: 53px;
+    left: 126px;
+    top: 22px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 36px;
+
+    color: #000000;
+
+}
+
+#death-number{
+    position: absolute;
+    width: 133px;
+    height: 43px;
+    left: 116px;
+    top: 102px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #000000;
+}
+.covid-sign{
+  position: absolute;
+  width: 358px;
+  height: 215px;
+  left: 1002px;
+  top: 167px;
+
+  background: #CEF6FF;
+  border-radius: 30px;
+}
+
+.news-div{
+  position: absolute;
+  width: 820px;
+  height: 366px;
+  left: 57px;
+  top: 439px;
+
+  background: #FFF8F1;
+  border-radius: 30px;
+}
+.readmore-div{
+  position: absolute;
+  width: 358px;
+  height: 377px;
+  left: 1002px;
+  top: 439px;
+
+  background: #CEF6FF;
+  border-radius: 30px;
+}
+
+#news-title{
+  position: absolute;
+  width: 85px;
+  height: 53px;
+  left: 350px;
+  top: 10px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 36px;
+
+  color: #000000;
+
+}
