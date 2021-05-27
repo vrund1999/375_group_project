@@ -32,8 +32,8 @@ li {
   border-radius: 30px;
 }
 #search-box{
-  position: absolute;
-  width: 350px;
+  position: relative;
+  width: 313px;
   height: 38px;
   left: 100px;
   top: 10px;
@@ -49,9 +49,23 @@ li {
   color: black;
   border: 0;
 }
-#title-text {
-  font-family: Lato;
-  text-align: center;
+#suggestions{
+  position: relative;
+  border-top: 2-x solid rgba(255, 255, 255, 0);
+  background-color: #1e4dd4;
+}
+
+#suggestions > div{
+  padding:  15px;
+  font-size: 20px;
+  color: #fff;
+  border-top: 1-x solid #999;
+  background-color: #1e4dd4;
+  cursor: pointer;
+}
+
+#suggestions > div:hover {
+  background-color: #1e4dd4;
 }
 
 .total-cases{
