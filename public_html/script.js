@@ -7,10 +7,10 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
             response.json().then(function (data) {
 
                 let totalCases = document.getElementById("total-number");
-                totalCases.textContent = data.totalCases;
+                totalCases.textContent = data.totalCases.toLocaleString();
 
                 let totalDeaths = document.getElementById("death-number");
-                totalDeaths.textContent = data.totalDeaths;
+                totalDeaths.textContent = data.totalDeaths.toLocaleString();
             })
         });
 
@@ -19,13 +19,13 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
         fetch(url).then(function (response) {
             response.json().then(function (data) {
 
-                console.log(data);
-
                 let newsHeader = document.getElementById("news-div-id");
+
+                removeOldArticles();
                 var list = document.createElement('ul');
+                list.id = 'article-list';
 
                 for (let object in data.newsArticles){
-                    console.log(data.newsArticles[object].newsArticleTitle);
                     
                     var listItem = document.createElement('li');
                     let a = document.createElement('a'); 
@@ -43,3 +43,12 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
 
     }
 });
+
+
+function removeOldArticles(){
+    let articleList = document.getElementById('article-list');
+
+    if (articleList !== null){
+        articleList.remove();
+    }
+}
