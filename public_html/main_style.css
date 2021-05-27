@@ -1,26 +1,25 @@
-body{
+body {
   position: relative;
   width: 1440px;
   height: 900px;
 
   background: rgba(198, 238, 255, 0.58);
 }
+
 .search-div{
   position: absolute;
   width: 555px;
   height: 59px;
   left: 442px;
-  top: 51px;
+  top: 61px;
   background: #F4FDFF;
   border-radius: 30px;
-
-
 }
 #search-box{
   position: absolute;
-  width: 313px;
+  width: 350px;
   height: 38px;
-  left: 146px;
+  left: 100px;
   top: 10px;
   background: none;
   font-family: Lato;
@@ -28,10 +27,17 @@ body{
   font-weight: 600;
   font-size: 30px;
   line-height: 36px;
+  outline: none;
+  text-align: center;
 
   color: black;
   border: 0;
 }
+#title-text {
+  font-family: Lato;
+  text-align: center;
+}
+
 .total-cases{
   position: absolute;
   width: 323px;
@@ -86,19 +92,18 @@ body{
 }
 
 #death-text{
-    position: absolute;
-    width: 156px;
-    height: 53px;
-    left: 126px;
-    top: 22px;
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 25px;
-    line-height: 36px;
+  position: absolute;
+  width: 156px;
+  height: 53px;
+  left: 96px;
+  top: 22px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 36px;
 
-    color: #000000;
-
+  color: #000000;
 }
 
 #death-number{
@@ -123,7 +128,7 @@ body{
   left: 1002px;
   top: 167px;
 
-  background: #CEF6FF;
+  background: skyblue;
   border-radius: 30px;
 }
 
@@ -144,7 +149,7 @@ body{
   left: 1002px;
   top: 439px;
 
-  background: #CEF6FF;
+  background:lavender;
   border-radius: 30px;
 }
 
@@ -162,5 +167,88 @@ body{
   line-height: 36px;
 
   color: #000000;
+}
 
+#vaccine-alert-page-text {
+  position: relative;
+  width: 300px;
+  height: 53px;
+  left: 25px;
+  top: 10px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+
+  text-align: center;
+ 
+  color: #000000;
+}
+
+#sign-up-system {
+	position: absolute;
+	width: 200px;
+	height: 48px;
+	left: 75px;
+	top: 155px;
+	background: white;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 30px;
+}
+
+#symptoms-text {
+  position: relative;
+  width: 200px;
+  height: 53px;
+  left: 75px;
+  top: 10px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+
+  text-align: center;
+ 
+  color: #000000;
+}
+
+#symptoms-pic {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  left: 95px;
+	top: 30px;
+}
+
+#readmore-button {
+	position: absolute;
+	width: 200px;
+	height: 48px;
+	left: 75px;
+	top: 315px;
+	background: white;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 30px;
+  
+}
+
+button {
+	position: absolute;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 36px;
+}
+
+#readmore-button:hover {
+  background-color: #a6a6ed;
+}
+
+#sign-up-system:hover {
+  background-color: #0099cc;
 }

@@ -8,7 +8,7 @@
     <link href="main_style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1>COVID-19 Statistics Dashboard</h1>
+    <h1 id="title-text">COVID-19 Statistics Dashboard</h1>
     <div class="search-div">
       <input type="text" placeholder="Search for the country" id="search-box">
     </div>
@@ -17,13 +17,13 @@
       <p id="total-number">1,450,000</p>
     </div>
    <div class="death-div">
-      <h3 id="death-text">Deaths</h3>
+      <h3 id="death-text">Total Deaths</h3>
       <p id="death-number">450,000</p>
    </div>
 
    <div class="covid-sign">
     <h3 id="vaccine-alert-page-text">Sign up for COVID-19 Vaccine Alert System</h3>
-    <button>Sign up</button>
+    <button id="sign-up-system">Sign up</button>
    </div>
 
    <div class="news-div">
@@ -31,7 +31,10 @@
     </div>
    <div class="readmore-div">
     <h3 id="symptoms-text">Symptoms of COVID-19</h3>
-    <button>Read More</button>
+    <img id="symptoms-pic" src="https://i1.wp.com/letswinpc.org/wp-content/uploads/2017/09/symptoms-icon.png?resize=300%2C321">
+    <form action="https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html">
+      <button id="readmore-button">Read More</button>
+    </form>
    </div>
     <script src="script.js"></script>
   </body>
