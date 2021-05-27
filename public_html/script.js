@@ -19,13 +19,10 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
         fetch(url).then(function (response) {
             response.json().then(function (data) {
 
-                console.log(data);
-
                 let newsHeader = document.getElementById("news-div-id");
                 var list = document.createElement('ul');
 
                 for (let object in data.newsArticles){
-                    console.log(data.newsArticles[object].newsArticleTitle);
                     
                     var listItem = document.createElement('li');
                     let a = document.createElement('a'); 

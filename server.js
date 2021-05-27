@@ -44,8 +44,7 @@ app.get("/newCovidData", function (req, res) {
     //https://rapidapi.com/vaccovidlive-vaccovidlive-default/api/vaccovid-coronavirus-vaccine-and-treatment-tracker
     axios.request(options).then(function (response) {
         let returnObject = {}
-
-
+        
         for (let property in response.data){
             if (response.data[property].TwoLetterSymbol == null){
                 continue;
@@ -57,10 +56,9 @@ app.get("/newCovidData", function (req, res) {
                 returnObject.totalDeaths = response.data[property].TotalDeaths;
                 returnObject.newCases = response.data[property].NewCases;
                 returnObject.newDeaths = response.data[property].NewDeaths;
+                break;
             }
         }
-
-        console.log(returnObject);
 
         res.json(returnObject);
 
