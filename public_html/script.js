@@ -21,7 +21,7 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
 
                 console.log(data);
 
-                let newsHeader = document.getElementById("news-title");
+                let newsHeader = document.getElementById("news-div-id");
                 var list = document.createElement('ul');
 
                 for (let object in data.newsArticles){

@@ -6,6 +6,22 @@ body {
   background: rgba(198, 238, 255, 0.58);
 }
 
+ul {
+  position: relative;
+  left: 20px;
+  top: 100px;
+  width: 700px;
+  height: 170px;
+}
+
+li {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 35px;
+}
+
 .search-div{
   position: absolute;
   width: 555px;
