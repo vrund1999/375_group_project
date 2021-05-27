@@ -27,12 +27,17 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
                 for (let object in data.newsArticles){
                     console.log(data.newsArticles[object].newsArticleTitle);
                     
+                    var listItem = document.createElement('li');
                     let a = document.createElement('a'); 
                     let link = document.createTextNode(data.newsArticles[object].newsArticleTitle);
                     a.append(link);
                     a.href = data.newsArticles[object].newsArticleUrl;
-                    newsHeader.appendChild(list);
+                    a.style.fontSize = "15px";
+                    listItem.appendChild(a);
+                    list.appendChild(listItem);
                 }
+
+                newsHeader.appendChild(list);
             })
         });
 
