@@ -7,10 +7,10 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
             response.json().then(function (data) {
 
                 let totalCases = document.getElementById("total-number");
-                totalCases.textContent = data.totalCases;
+                totalCases.textContent = data.totalCases.toLocaleString();
 
                 let totalDeaths = document.getElementById("death-number");
-                totalDeaths.textContent = data.totalDeaths;
+                totalDeaths.textContent = data.totalDeaths.toLocaleString();
             })
         });
 
@@ -21,6 +21,7 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
 
                 let newsHeader = document.getElementById("news-div-id");
                 var list = document.createElement('ul');
+                list.id = 'article-list';
 
                 for (let object in data.newsArticles){
                     
@@ -40,3 +41,13 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
 
     }
 });
+
+
+function removeOldArticles(){
+    let articleList = document.getElementById('article-list');
+
+    if (articleList !== null){
+        console.log("REMOVING OLD ARTICLE LIST");
+        articleList.remove();
+    }
+}
