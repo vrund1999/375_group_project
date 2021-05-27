@@ -20,6 +20,8 @@ document.getElementById('search-box').addEventListener('keypress', function (e) 
             response.json().then(function (data) {
 
                 let newsHeader = document.getElementById("news-div-id");
+
+                removeOldArticles();
                 var list = document.createElement('ul');
                 list.id = 'article-list';
 
@@ -47,7 +49,6 @@ function removeOldArticles(){
     let articleList = document.getElementById('article-list');
 
     if (articleList !== null){
-        console.log("REMOVING OLD ARTICLE LIST");
         articleList.remove();
     }
 }
