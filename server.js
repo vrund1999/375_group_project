@@ -1,14 +1,20 @@
 
 let countryCodeLookup = require("iso-countries-lookup");
 let axios = require("axios");
-let express = require("express");
-let app = express();
+const express = require("express");
+const app = express();
 
 // retrieve the api key and base api url from env.json
 let apiFile = require("./env.json");
 let apiKey = apiFile["api_key"];
-let baseUrl = apiFile["base_api_url"];
-let apiHost = apiFile["api_host"];
+let all_covid_data_api_base_url = apiFile["all_covid_data_api_base_url"];
+let all_covid_data_api_host = apiFile["all_covid_data_api_host"];
+let all_covid_data_6_months_base_url = apiFile["all_covid_data_6_months_base_url"];
+let covid_news_api_base_url = apiFile["covid_news_api_base_url"];
+let covid_news_api_host = apiFile["covid_news_api_host"];
+
+//Indicate what folder the html static files will be located in
+app.use(express.static("public_html"));
 
 //App will run on localhost port 3000
 let port = 3000;
@@ -17,141 +23,101 @@ let hostname = "localhost";
 //Indicate what folder the html static files will be located in
 app.use(express.static("public_html"));
 
-app.get("/covidData", function (req, res) {
+app.get("/newCovidData", function (req, res) {
     let country = req.query.country;
-    let returnObject = {}
+
+    console.log("COUNTRY: " + country);
 
     let twoLetterCountryCode = countryCodeLookup(country).toLocaleLowerCase();
-    let threeLetterCountryCode;
+
+    console.log("twoLetterCountryCode: " + twoLetterCountryCode);
 
     var options = {
         method: 'GET',
-        url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/',
+        url: `${all_covid_data_api_base_url}`,
         headers: {
           'x-rapidapi-key': `${apiKey}`,
-          'x-rapidapi-host': `${apiHost}`
+          'x-rapidapi-host': `${all_covid_data_api_host}`
         }
       };      
-
+    
     //https://rapidapi.com/vaccovidlive-vaccovidlive-default/api/vaccovid-coronavirus-vaccine-and-treatment-tracker
     axios.request(options).then(function (response) {
-        for (let data in response.data){
-            if (response.data[data].TwoLetterSymbol == twoLetterCountryCode){
+        let returnObject = {}
 
-                threeLetterCountryCode = response.data[data].ThreeLetterSymbol;
-                returnObject["totalCases"] = response.data[data].TotalCases;
-                returnObject["totalDeaths"] = response.data[data].TotalDeaths;
-                returnObject["newCases"] = response.data[data].NewCases;
-                returnObject["newDeaths"] = response.data[data].NewDeaths;
+
+        for (let property in response.data){
+            if (response.data[property].TwoLetterSymbol == null){
+                continue;
+            }
+            else if (response.data[property].TwoLetterSymbol.toLowerCase() == twoLetterCountryCode){
+
+                threeLetterCountryCode = response.data[property].ThreeLetterSymbol;
+                returnObject.totalCases = response.data[property].TotalCases;
+                returnObject.totalDeaths = response.data[property].TotalDeaths;
+                returnObject.newCases = response.data[property].NewCases;
+                returnObject.newDeaths = response.data[property].NewDeaths;
             }
         }
+
+        console.log(returnObject);
+
+        res.json(returnObject);
+
     }).catch(function (error) {
         console.error(error);
     });
-
-    var options = {
-        method: 'GET',
-        url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/covid-ovid-data/sixmonth/${threeLetterCountryCode}}`,
-        headers: {
-            'x-rapidapi-key': `${apiKey}`,
-            'x-rapidapi-host': `${apiHost}`
-          }
-      };
-      
-      //https://rapidapi.com/vaccovidlive-vaccovidlive-default/api/vaccovid-coronavirus-vaccine-and-treatment-tracker
-      axios.request(options).then(function (response) {
-        for (let data in response.data){
-            if (response.data[data].symbol == threeLetterCountryCode){
-                let prevNewCases = response.data[data].new_cases;
-                let prevNewDeaths = response.data[data].new_deaths;
-
-                if ((returnObject["newCases"] - prevNewCases)  > 0){
-                    returnObject["casesWentUp"] = true;
-                }
-                else{
-                    returnObject["casesWentUp"] = false;
-                }
-
-                if ((returnObject["newDeaths"] - prevNewDeaths) > 0){
-                    returnObject["deathsWentUp"] = true;
-                }
-                else{
-                    returnObject["deathsWentUp"] = false;
-                }
-            }
-        }
-      }).catch(function (error) {
-          console.error(error);
-      });
-
-      var options = {
-        method: 'GET',
-        url: `https://coronavirus-smartable.p.rapidapi.com/news/v1/${twoLetterCountryCode}/`,
-        headers: {
-            'x-rapidapi-key': `${apiKey}`,
-            'x-rapidapi-host': 'coronavirus-smartable.p.rapidapi.com'
-        }
-      };
-      
-      //https://rapidapi.com/SmartableAI/api/coronavirus-smartable
-      axios.request(options).then(function (response) {
-          console.log(response.data);
-      }).catch(function (error) {
-          console.error(error);
-      });
-      
     
 });
 
-var options = {
-    method: 'GET',
-    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/',
-    headers: {
-      'x-rapidapi-key': `${apiKey}`,
-      'x-rapidapi-host': `${apiHost}`
-    }
-  };      
+app.get("/newCovidNews", function (req, res) {
+    let country = req.query.country;
+    let twoLetterCountryCode = countryCodeLookup(country).toLocaleLowerCase();
 
-let twoLetterCountryCode = countryCodeLookup("china").toLocaleLowerCase();
-let threeLetterCountryCode;
-axios.request(options).then(function (response) {
-    for (let data in response.data){
-        if (response.data[data].TwoLetterSymbol == twoLetterCountryCode){
-            threeLetterCountryCode = response.data[data].ThreeLetterSymbol;
+    var options = {
+        method: 'GET',
+        url: `${covid_news_api_base_url}${twoLetterCountryCode.toUpperCase()}/`,
+        headers: {
+            'x-rapidapi-key': `${apiKey}`,
+            'x-rapidapi-host': `${covid_news_api_host}`
         }
-    }
+    };      
+    
+    //https://rapidapi.com/SmartableAI/api/coronavirus-smartable
+    axios.request(options).then(function (response) {
+
+        let newsArticles = []
+
+        for (let i = 0; i < 4; i++){
+            let object = {};
+            object['newsArticleTitle'] = response.data.news[i].title;
+            object['newsArticleUrl'] = response.data.news[i].webUrl;
+            newsArticles.push(object);
+        }
+
+        res.json({'newsArticles': newsArticles});
+
     }).catch(function (error) {
         console.error(error);
     });
-    
-var options = {
-    method: 'GET',
-    url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/covid-ovid-data/sixmonth/${threeLetterCountryCode}`,
-    headers: {
-        'x-rapidapi-key': `${apiKey}`,
-        'x-rapidapi-host': `${apiHost}`
-      }
-  };
-  
-  axios.request(options).then(function (response) {
-      console.log(response.data);
-  }).catch(function (error) {
-      console.error(error);
-  });
+
+});
+
 
 app.listen(port, hostname, () => {
     console.log(`Listening at: http://${hostname}:${port}`);
 });
 
-const express = require("express");
-const app = express();
+
+
+/*
 const MongoClient = require('mongodb').MongoClient;
 const body_parser = require("body-parser");
 
 // parse JSON (application/json content-type)
 app.use(body_parser.json());
 
-const port = 4000;
+//const port = 4000;
 
 
 const uri = "mongodb+srv://sarthak:sarthak@cluster0.g7wkj.mongodb.net/375?retryWrites=true&w=majority";
@@ -161,6 +127,7 @@ client.connect(err => {
   console.log(`database connected`)
   client.close();
 });
+*/
 
 app.listen(port, () => {
     console.log(`server listening at ${port}`);
