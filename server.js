@@ -107,8 +107,6 @@ app.listen(port, hostname, () => {
 });
 
 
-
-/*
 const MongoClient = require('mongodb').MongoClient;
 const body_parser = require("body-parser");
 
@@ -125,7 +123,7 @@ client.connect(err => {
   console.log(`database connected`)
   client.close();
 });
-*/
+
 
 app.listen(port, () => {
     console.log(`server listening at ${port}`);
