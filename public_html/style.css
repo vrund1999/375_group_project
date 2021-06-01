@@ -240,13 +240,26 @@ h3 {
 	position: absolute;
 	width: 424px;
 	height: 48px;
-	left: 508px;
+	left: 300px;
 	top: 715px;
 	background: #CEEAFF;
 	border: 1px solid #000000;
 	box-sizing: border-box;
 	border-radius: 30px;
 }
+
+#returnToMain {
+	position: absolute;
+	width: 424px;
+	height: 48px;
+	left: 750px;
+	top: 715px;
+	background: #CEEAFF;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 30px;
+}
+
 
 button {
 	position: absolute;
