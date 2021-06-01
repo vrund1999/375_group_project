@@ -1,3 +1,17 @@
+h1 {
+  position: relative;
+  width: 682px;
+  height: 30px;
+  left: 379px;
+  top: 1px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 58px;
+  color: #000000;
+}
+
 body {
   position: relative;
   width: 1440px;
