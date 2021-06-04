@@ -3,7 +3,8 @@ let countryCodeLookup = require("iso-countries-lookup");
 let axios = require("axios");
 const express = require("express");
 const app = express();
-
+const VaxxModel = require("./models/schema");
+const mongoose = require("mongoose");
 // retrieve the api key and base api url from env.json
 let apiFile = require("./env.json");
 let apiKey = apiFile["api_key"];
@@ -102,12 +103,6 @@ app.get("/newCovidNews", function (req, res) {
 });
 
 
-app.listen(port, hostname, () => {
-    console.log(`Listening at: http://${hostname}:${port}`);
-});
-
-
-const MongoClient = require('mongodb').MongoClient;
 const body_parser = require("body-parser");
 
 // parse JSON (application/json content-type)
@@ -116,15 +111,58 @@ app.use(body_parser.json());
 //const port = 4000;
 
 
-const uri = "mongodb+srv://sarthak:sarthak@cluster0.g7wkj.mongodb.net/375?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("375").collection("Doc1");
-  console.log(`database connected`)
-  client.close();
-});
+mongoose.connect(
+    "mongodb+srv://sarthak:sarthak@cluster0.imo2z.mongodb.net/375?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true
+    }
+  );
+
+//  get whole doc with the email query
+  app.get("/Vaccine", async (request, response) => {
+    const mail = request.query.mail;
+    if(mail==='test@g.com'){
+    console.log("ma", mail)
+    }
+  
+    // VaxxModel.findOne({"email": mail }, function (err, docs) {
+    //     if (err){
+            
+    //         console.log(err)
+    //     }
+    //     else{
+            
+    //         response.json(docs)
+    //         console.log("Result : ", json(docs));
+    //     }
+    // });
+    const vac = await VaxxModel.findOne({email: mail});
+
+  try {
+    response.send(vac);
+    console.log("json:", vac)
+  } catch (error) {
+    response.status(500).send(error);
+  }
+  });
+
+//   save info on the database. Send json in body from the client side.
+  app.post("/sendVacInfo", async (request, response) => {
+    const newModel = new VaxxModel(request.body);
+  
+    try {
+      await newModel.save();
+      response.send(newModel);
+      console.log("model saved")
+    } catch (error) {
+      response.status(500).send(error);
+      console.log(error);
+    }
+  });
 
 
-app.listen(port, () => {
-    console.log(`server listening at ${port}`);
+app.listen(port, hostname, () => {
+    console.log(`Listening at: http://${hostname}:${port}`);
 });
