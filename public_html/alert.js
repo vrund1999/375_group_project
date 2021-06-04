@@ -1,6 +1,6 @@
 
 document.getElementById('signup').addEventListener('click', function(){
-    let url = '/addUser';
+    let url = '/sendVacInfo';
 
     let firstName = document.getElementById("firstName");
     let lastName = document.getElementById("lastName");
