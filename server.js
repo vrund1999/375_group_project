@@ -112,7 +112,7 @@ app.use(body_parser.json());
 
 
 mongoose.connect(
-    "mongodb+srv://sarthak:sarthak@cluster0.imo2z.mongodb.net/375?retryWrites=true&w=majority",
+    "mongodb+srv://sarthak:sarthak@cluster0.etna5.mongodb.net/375?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useFindAndModify: false,
