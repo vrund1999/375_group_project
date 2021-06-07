@@ -8,6 +8,8 @@ Project is created with:
 * Javascript
 * HTML
 * CSS
+* Express
+* Axios
 * MongoDB
 	
 ## Launch
