@@ -15,13 +15,10 @@ Project is created with:
 ## Launch
 To launch this project, follow these steps:
 
-1. 
-2. 
-3. 
-4. 
-
-Install it locally using npm:
-
+1. Pull branch ```main```
+2. Install libraries by running ```npm``` command:
 ```
 $ npm install
 ```
+4. Run ```node server.js``` to launch server
+5. Navigate to ```http://localhost:3000/main.html``` to launch COVID-19 Statistics Dashboard homepage
