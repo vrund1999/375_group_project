@@ -20,7 +20,7 @@ const VaxxSchema = new mongoose.Schema({
     
 },
     DATE:{
-        type: Date,
+        type: String,
         required: true,
     },
     Vaxx:{
