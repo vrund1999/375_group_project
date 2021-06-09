@@ -25,6 +25,11 @@ var requestOptions = {
 
 fetch("http://localhost:3000/sendVacInfo", requestOptions)
   .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  .then(result => {
+    console.log(result);
+    alert("You have sucessfully registered for a reminder for your vaccine appointment! Please check your email for a reminder. Thank you for using the Vaccine Alert System.");
+  })
+  .catch(error => {
+    console.log('error', error);
+  });
   })
