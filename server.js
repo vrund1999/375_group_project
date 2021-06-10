@@ -5,6 +5,9 @@ const express = require("express");
 const app = express();
 const VaxxModel = require("./models/schema");
 const mongoose = require("mongoose");
+const mongo = require("mongodb").MongoClient;
+const nodemailer = require('nodemailer');
+
 // retrieve the api key and base api url from env.json
 let apiFile = require("./env.json");
 let apiKey = apiFile["api_key"];
@@ -27,11 +30,7 @@ app.use(express.static("public_html"));
 app.get("/newCovidData", function (req, res) {
     let country = req.query.country;
 
-    console.log("COUNTRY: " + country);
-
     let twoLetterCountryCode = countryCodeLookup(country).toLocaleLowerCase();
-
-    console.log("twoLetterCountryCode: " + twoLetterCountryCode);
 
     var options = {
         method: 'GET',
@@ -107,6 +106,8 @@ const body_parser = require("body-parser");
 
 // parse JSON (application/json content-type)
 app.use(body_parser.json());
+app.use(express.json());
+
 
 //const port = 4000;
 
@@ -120,33 +121,27 @@ mongoose.connect(
     }
   );
 
+
 //  get whole doc with the email query
   app.get("/Vaccine", async (request, response) => {
-    const mail = request.query.mail;
-    if(mail==='test@g.com'){
-    console.log("ma", mail)
-    }
-  
-    // VaxxModel.findOne({"email": mail }, function (err, docs) {
-    //     if (err){
-            
-    //         console.log(err)
-    //     }
-    //     else{
-            
-    //         response.json(docs)
-    //         console.log("Result : ", json(docs));
-    //     }
-    // });
-    const vac = await VaxxModel.findOne({email: mail});
 
-  try {
-    response.send(vac);
-    console.log("json:", vac)
-  } catch (error) {
-    response.status(500).send(error);
-  }
+    let url = "mongodb+srv://sarthak:sarthak@cluster0.etna5.mongodb.net/375?retryWrites=true&w=majority";
+
+    let client = await mongo.connect(url);
+    let db = client.db();
+
+    let cursor = db.collection('vaxxes').find();
+    
+    let results = [];
+
+    cursor.forEach(doc => {
+      results.push(doc);
+    }).then(function(){
+      response.json({'documents': results});
+    });
+
   });
+
 
 //   save info on the database. Send json in body from the client side.
   app.post("/sendVacInfo", async (request, response) => {
@@ -154,14 +149,61 @@ mongoose.connect(
   
     try {
       await newModel.save();
-      response.send(newModel);
-      console.log("model saved")
+      response.status(200).send(newModel);
+      console.log("model saved");
     } catch (error) {
       response.status(500).send(error);
       console.log(error);
     }
   });
 
+  let emailsSentAlready = [];
+
+  app.post("/SendEmail", async (request, response) => {
+
+    for (let object in request.body.allObjects){
+      let email = request.body.allObjects[object].email;
+
+      console.log("EMAIL TO BE SENT TO: " + email);
+
+      if (emailsSentAlready.includes(email)){
+        console.log("Email will not be sent to: " + email + " because it was already sent.");
+        continue;
+      }
+    
+      else{
+    
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: '375vars@gmail.com',
+            pass: 'teamvars375'
+          }
+        });
+        
+        var mailOptions = {
+          from: '375vars@gmail.com',
+          to: `${email}`,
+          subject: 'Vaccine Appointment Alert',
+          text: `Hello ${request.body.allObjects[object].FirstName}, ${request.body.allObjects[object].SecondName}. This is a courtesy reminder for your ${request.body.allObjects[object].Vaxx} Covid-19 shot scheduled for tomorrow ${request.body.allObjects[object].DATE}.`
+        };
+        
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
+
+        emailsSentAlready.push(email);
+
+      }
+    }
+    
+    response.status(200).send();
+
+  })
 
 app.listen(port, hostname, () => {
     console.log(`Listening at: http://${hostname}:${port}`);
